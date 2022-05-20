@@ -18,7 +18,7 @@ total_battle_days <- nrow(russia_losses_equipment)+1
 #Chart ------------------------------------------------------------------------------------------------
 russia_losses_equipment$date <- as.Date(russia_losses_equipment$date)
 
-plot(x=russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_aircraft, pch = 16, ylim = c(0, 70), xlab = "date", ylab = "lost unit")
+plot(x=russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_aircraft, pch = 16, ylim = c(0, 70), main = "Intensity of the War", xlab = "Date", ylab = "Lost Unit")
 lines(x = russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_aircraft)
 points(x=russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_tank, pch = 17, col = "red")
 lines(x = russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_tank, col = "red")
