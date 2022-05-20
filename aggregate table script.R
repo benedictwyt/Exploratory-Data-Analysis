@@ -1,4 +1,5 @@
 library(dplyr)
+library(stringr)
 equip_loss_df <- read.csv("russia_losses_equipment.csv")
 View(equip_loss_df)
 
