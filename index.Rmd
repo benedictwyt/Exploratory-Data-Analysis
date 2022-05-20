@@ -1,0 +1,65 @@
+---
+title: "Report of Russian military action in the Ukraine War"
+author: "Joshua, Benedict, Derek, Fan"
+date: '2022-05-20'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+source("Summary Information Script.R")
+source("aggregate table script.R")
+source("Chart 1.R")
+source("Chart 2.R")
+source("Chart 3.R")
+```
+
+## Introduction
+
+As the Ukraine War is moving toward the fifth month, we want to interpret the 
+war through the eyes of statistics. This report will present the condition on 
+the battlefield using data set of the Russian equipment loss. We hope to provide
+readers with some key takeaway to help them understand more about the war.
+
+## Summary
+
+In the data set we have selected, it recorded the loss of equipments during the Russian Ukrainian War. With this information, we were able to analyze and figure out six important values that are beneficial for understanding the war. First, we calculated the exact number of days, which is  
+**`r summary_info$num_days_of_war`** in this case, that the wars have taken place. It helps the audience to have a precise understanding of the longevity of this war. Further, we also figured out the number of weeks that the war has taken place, which is **`r summary_info$total_weeks_war_took_place`**, so the audience can have a better understanding of the time frame with a glance as weeks are generally easier to visualize given the small value it correspond with comparing to days. Besides, we also managed to find day when most of aircraft were lost, which is **`r summary_info$date_losses_most_aircraft`**, so we can have a better understanding of which day that the war is most intensive. Furthermore, we also managed to find day when most of drone were lost, which is **`r summary_info$date_losses_most_drone`**, so we can have a better understanding of which day that Russian were most intensively spying. Beyond that, we think it would also be crucial to see the total lost in tank, which is **`r summary_info$total_loss_tank`**, so the audience can have a clear understanding of the material lost due to this war. Last but not least, even though both countries have fought on land, there does seem to be 
+**`r summary_info$total_loss_naval_ship`** of Naval Ship lost based on our investigation. 
+
+## Aggregate Table
+
+This table showcases the total loss of each equipment from February to May. From this table, we can know the war situation through months. This indicates that the war peaks in April since the loss of each equipment is the highest.
+
+```{r aggregate table, echo = FALSE}
+library("knitr")
+kable(month_loss)
+```
+
+## Indensity of the War
+
+On the chart, we investigate in the correlation between loss of tank and aircraft related to time. The purpose of this chart is to show the day when Russian invade most intensively, which is a part of their military behavior. Based on our finding and chart, the most intensively invasion took place in the beginning of March and gradually becomes stable. However, high and lows are still visible which suggests that the war is most intensive around the begging of each month, which I found quick interesting to learn from. 
+
+```{r intensity, echo=FALSE}
+plot(x=russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_aircraft, pch = 16, ylim = c(0, 70), main = "Intensity of the War", xlab = "Date", ylab = "Lost Unit")
+lines(x = russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_aircraft)
+points(x=russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_tank, pch = 17, col = "red")
+lines(x = russia_losses_equipment$date, y=russia_losses_equipment$new_losses_in_tank, col = "red")
+legend("topright", c("aircraft", "tank"), col = c("black", "red"), pch = c(16, 17))
+```
+
+## Trend of Aircraft Losses
+
+This chart analyze and visualize the the lost of aircraft in each day and to analyze the trend of it. According to the graph, we can see that with the war keep going, the loses of aircraft in a single day showing a decreasing trend.
+
+```{r aircraft losses, echo=FALSE}
+plot(trend)
+```
+
+## Equiment Losing Rate
+
+This chart to visualize and analyze the aircraft losing rate compared to the tank losing rate. The formula used to calculate the losing rate is (new lost equipment / total lost equipment) * 100%. After seeing the graph, I conclude that relative more aircraft were destroyed at the early period of the war. 
+And relative more tanks were destroyed at the late period of the war.
+
+```{r losing rate, echo=FALSE}
+plot(lose_rate)
+```

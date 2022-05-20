@@ -13,7 +13,7 @@ equipLoss <- equipLoss %>%
 equipLoss <- equipLoss %>%
   mutate(new_tank_rate = (equipLoss$tank - lag(tank, n = 1, default = 0)) / max(tank) * 100)
 
-ggplot(equipLoss, aes(x = day)) + 
+lose_rate <- ggplot(equipLoss, aes(x = day)) + 
   geom_line(aes(y = new_aircraft_rate, col = "aircraft losing rate"), size = 1) +
   geom_line(aes(y = new_tank_rate, col = "tank losing rate"), size = 1) +
   labs(x = "Days of war", y = "Frequency in %", col = "Legand") +

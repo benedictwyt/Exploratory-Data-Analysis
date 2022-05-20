@@ -10,7 +10,7 @@ equipLoss <- equipLoss %>%
 
 lm1.out <- lm(equipLoss$new_aircraft ~ equipLoss$day)
   
-ggplot(data = equipLoss, aes(x = day, y = new_aircraft, fill = new_aircraft)) +
+trend <- ggplot(data = equipLoss, aes(x = day, y = new_aircraft, fill = new_aircraft)) +
   geom_area(colour = 1, fill = "sky blue") +
   ggtitle("Trend of the losses of aircrafts") +
   xlab("Days of war") +
