@@ -55,11 +55,13 @@ This chart analyze and visualize the the lost of aircraft in each day and to ana
 plot(trend)
 ```
 
-## Equiment Losing Rate
+## APC Losing percentage
 
-This chart to visualize and analyze the aircraft losing rate compared to the tank losing rate. The formula used to calculate the losing rate is (new lost equipment / total lost equipment) * 100%. After seeing the graph, I conclude that relative more aircraft were destroyed at the early period of the war. 
-And relative more tanks were destroyed at the late period of the war.
+In this chart, I further examine the loss of APC, which is short for armed cars for infantry transportation, what a pie chart. Essentially, a pie chart can better visualize the loss within each month, which better show case the intensity within this war. By looking at the chart, I have noticed that majority of loss took place in the third month of the year, March, and does seem to reduce over time, which positively suggesting the war is slowly cooling down. 
 
 ```{r losing rate, echo=FALSE}
-plot(lose_rate)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+plot(chart_3)
 ```
