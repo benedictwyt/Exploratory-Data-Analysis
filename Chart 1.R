@@ -4,7 +4,7 @@ library(dplyr)
 
 
 #data frame edit---------------------------------------------------------------------------------------
-russia_losses_equipment <- read.csv("russia_losses_equipment.csv")
+russia_losses_equipment <- read.csv("c:/Users/12064/Exploratory-Data-Analysis/russia_losses_equipment.csv")
 
 russia_losses_equipment <-mutate(russia_losses_equipment, 
  new_losses_in_tank = russia_losses_equipment$tank -lag(russia_losses_equipment$tank,k = 1, order_by = date))
